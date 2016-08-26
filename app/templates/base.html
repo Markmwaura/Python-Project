@@ -1,17 +1,17 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Login Example{% endblock %}
+{% block title %}TruProperties{% endblock %}
 
 {% block navbar %}
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('main.index') }}">
-                Login Example
+                TruProperties
             </a>
             <ul class="nav navbar-nav">
                 <li><a href="{{ url_for('main.index') }}">Home</a></li>
-                <li><a href="{{ url_for('main.protected') }}">Protected</a></li>
+                <li><a href="{{ url_for('main.protected') }}">Properties</a></li>
             </ul>>
             <ul class="nav navbar-nav navbar-right">
                 <li>
