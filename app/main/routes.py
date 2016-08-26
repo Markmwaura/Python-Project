@@ -2,7 +2,9 @@ from flask import render_template, redirect, url_for, request
 from flask_login import login_required, login_user, logout_user
 from ..models import User
 from . import main
-from .forms import LoginForm
+from app import db
+
+from .forms import LoginForm, RegistrationForm
 
 
 @main.route('/login', methods=['GET', 'POST'])
@@ -15,6 +17,22 @@ def login():
         login_user(user, form.remember_me.data)
         return redirect(request.args.get('next') or url_for('main.index'))
     return render_template('login.html', form=form)
+
+
+@main.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm(request.form)
+    if request.method == 'POST' and form.validate():
+        #user = User(form.username.data, form.email.data,
+        #            form.password.data)
+
+        # db.session.add(user)
+        # db.session.commit()
+
+        User.register(form.username.data,form.password.data)
+        return redirect(url_for('main.login'))
+    return render_template('register.html', form=form)
+
 
 
 @main.route('/logout')
